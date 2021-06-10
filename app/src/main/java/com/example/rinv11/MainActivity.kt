@@ -17,13 +17,13 @@ class MainActivity : AppCompatActivity() {
         //Cambiar vista para iniciar sesion
         val boton1=findViewById<ImageButton>(R.id.imageButton)
         boton1.setOnClickListener {
-            val intento1 = Intent(this, ActivityIniciarSesion::class.java)
+            val intento1 = Intent(this, ActivityIniciar::class.java)
             startActivity(intento1)
         }
         //Cambiar vista para fotomultas
         val boton2=findViewById<ImageButton>(R.id.imageButton2)
         boton2.setOnClickListener {
-            val intento2 = Intent(this, ActivityFotomultas::class.java)
+            val intento2 = Intent(this, ActivityFotoMul::class.java)
             startActivity(intento2)
         }
 
@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 //            val intento2 = Intent(this, ActivityFotomultas::class.java)
 //            startActivity(intento2)
 //        }
+
 
 
     }
