@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/Img_logo"
+        android:id="@+id/imgLogo"
         android:layout_width="232dp"
         android:layout_height="97dp"
         android:layout_marginStart="99dp"
@@ -19,7 +19,7 @@
         app:srcCompat="@mipmap/simit" />
 
     <TextView
-        android:id="@+id/Text_Titulo"
+        android:id="@+id/textTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
@@ -28,40 +28,41 @@
         android:text="FOTOMULTAS"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Img_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
 
     <TextView
-        android:id="@+id/text_NombreEmpresa"
+        android:id="@+id/textNombreEmpresa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="194dp"
         android:layout_marginTop="5dp"
         android:text="RIN"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Text_Titulo" />
+        app:layout_constraintTop_toBottomOf="@+id/textTitulo" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnIniciarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_NombreEmpresa"
+        app:layout_constraintTop_toBottomOf="@+id/textNombreEmpresa"
+        android:onClick="ImageButton_Click"
         app:srcCompat="@mipmap/is" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/btnRegistrate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_NombreEmpresa"
+        app:layout_constraintTop_toBottomOf="@+id/textNombreEmpresa"
         app:srcCompat="@mipmap/registrar" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/btnAtencion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
@@ -69,6 +70,6 @@
         android:layout_marginEnd="104dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrate"
         app:srcCompat="@mipmap/atencion" />
 </androidx.constraintlayout.widget.ConstraintLayout>
