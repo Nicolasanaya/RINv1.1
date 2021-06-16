@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intento2)
         }
 
-        Toast.makeText(applicationContext, "onCreate", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(applicationContext, "onCreate", Toast.LENGTH_SHORT).show()
 
         //Cambiar vista para fotomultas
 //        val boton2=findViewById<ImageButton>(R.id.imageButton2)
@@ -40,36 +40,36 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        Toast.makeText(applicationContext, "onStart", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Toast.makeText(applicationContext, "onResume", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Toast.makeText(applicationContext, "onPause", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Toast.makeText(applicationContext, "onStop", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Toast.makeText(applicationContext, "onRestart", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Toast.makeText(applicationContext, "onDestroy", Toast.LENGTH_SHORT).show()
-
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        Toast.makeText(applicationContext, "onStart", Toast.LENGTH_SHORT).show()
+//    }
+//
+//    override fun onResume() {
+//        super.onResume()
+//        Toast.makeText(applicationContext, "onResume", Toast.LENGTH_SHORT).show()
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        Toast.makeText(applicationContext, "onPause", Toast.LENGTH_SHORT).show()
+//    }
+//
+//    override fun onStop() {
+//        super.onStop()
+//        Toast.makeText(applicationContext, "onStop", Toast.LENGTH_SHORT).show()
+//    }
+//
+//    override fun onRestart() {
+//        super.onRestart()
+//        Toast.makeText(applicationContext, "onRestart", Toast.LENGTH_SHORT).show()
+//    }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        Toast.makeText(applicationContext, "onDestroy", Toast.LENGTH_SHORT).show()
+//
+//    }
 
     public fun ImageButton_Click(view: View) {
 

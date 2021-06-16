@@ -8,69 +8,140 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
-import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.beust.klaxon.JsonArray
 import com.beust.klaxon.Klaxon
-import com.beust.klaxon.KlaxonJson
-import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_fotomul.*
+import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONArray
+import org.json.JSONObject
 
-class FotoMulActivity : AppCompatActivity() {
+
+class FotoMulActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener  {
 
     private val REQUEST_CAMARE = 1
     private val REQUEST_GALERY = 2
-
-
-
     var foto: Uri? = null
+    var listDescripcion: MutableList<String> = mutableListOf<String>()
+    var listCodigo: MutableList<String> = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fotomul)
         abrirGaleria_Click()
         abrirCamara_Click()
-        pruebavolley()
+        LlamadoMarcas()
+        LlamadosCodigos()
+        Enviopost()
 
     }
 
 
-    private fun pruebavolley(){
-        val textoresultado = findViewById<TextView>(R.id.textTituloRegistrar)
-        val url = "https://apir.apiupbateneo.xyz/Multas/Marcas"
-       //val url = "https://apir.apiupbateneo.xyz/ping"
+    private fun Enviopost(){
+
+        val url = "https://apir.apiupbateneo.xyz/Multas/Multa"
+        val texto = findViewById<TextView>(R.id.textTituloRegistrar)
+
+        val placa = findViewById<EditText>(R.id.editTextPlaca)
+        val nplaca = placa.text
+
+        val marca = findViewById<Spinner>(R.id.spnMarca)
+
+
+        val multa = findViewById<Spinner>(R.id.spnCodigoMulta)
+        multa.onItemSelectedListener. toString()
+
+        val descripcioncodigo = findViewById<TextView>(R.id.textDescripcioncodigo)
+        val ndescripcion = descripcioncodigo.text
+
+        val observacion = findViewById<EditText>(R.id.editTextObservaciones)
+        val nobservacion = observacion.text
+
+        val jsonObject = JSONObject()
+        jsonObject.put("placa",nplaca)
+        jsonObject.put("marca",marca)
+        jsonObject.put("codigo",multa)
+        jsonObject.put("Descripcion",ndescripcion)
+        jsonObject.put("observacion",nobservacion)
+
+
+        buttonprueba.setOnClickListener(){
+            texto.text = (jsonObject.toString())
+
+        }
+
+        //texto.text = (jsonObject.toString())
+
+
+
+
+//        val queue = Volley.newRequestQueue(this)
+//
+//        val stringRequest = StringRequest(Request.Method.POST,url,Response.Listener {
+//                response ->
+//            val jsonObject = JSONObject()
+//            jsonObject.put("multa",placa)
+//        }, { Toast.makeText(applicationContext, "algo salio mal", Toast.LENGTH_SHORT).show() })
+    }
+
+    private fun LlamadosCodigos(){
+        val spiner1 = findViewById<Spinner>(R.id.spnCodigoMulta)
+        spiner1.onItemSelectedListener = this
+
+        val url1 = "https://apir.apiupbateneo.xyz/Multas/Codigos"
+
+        //val txtDescripcion = findViewById<EditText>(R.id.editTextDescripcion)
+
 
         val queue = Volley.newRequestQueue(this)
 
-        val stringRequest = StringRequest(Request.Method.GET,url,Response.Listener { response -> textTituloRegistrar.text = "La respuesta  es:${response}" },
-            Response.ErrorListener { textTituloRegistrar.text = "algo salio mal" })
+        val stringRequest1 = StringRequest(Request.Method.GET,url1, {
+                response ->  val klaxonC = Klaxon().parseArray<codigoMulta>(response)
 
-//        val stringRequest = StringRequest(Request.Method.GET,url,Response.Listener {  },
-//            Response.ErrorListener {  })
+            //var listDescripcion: MutableList<String> = mutableListOf<String>()
 
-        //val klaxon = Klaxon().parseArray<Marca>(stringRequest.toString())
+            if (klaxonC != null) {
+                listCodigo.add("Seleccione esta mierda")
+                listDescripcion.add("")
+                for (element in klaxonC){
+                    listCodigo.add(element.codigo)
+                    listDescripcion.add(element.descripcion)
+                }
+                spiner1.adapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,listCodigo)
+            }
 
-        //textTituloRegistrar.text = klaxon.toString()
+        }, { Toast.makeText(applicationContext, "algo salio mal", Toast.LENGTH_SHORT).show() })
 
-//
-//        val stringRequest = StringRequest(Request.Method.GET,url,Response.Listener {  },
-//            Response.ErrorListener {  })
+        queue.add(stringRequest1)
 
+    }
 
-//        val gson = Gson()
-//        val json:String = stringRequest.toString()
-//
-//        val marca:Marca = gson.fromJson(json,Marca::class.java)
-//        textoresultado.text = marca.toString()
+    private fun LlamadoMarcas(){
+        val spiner = findViewById<Spinner>(R.id.spnMarca)
+        val url = "https://apir.apiupbateneo.xyz/Multas/Marcas"
 
+        val queue = Volley.newRequestQueue(this)
+
+        val stringRequest = StringRequest(Request.Method.GET,url, {
+                response ->  val klaxon = Klaxon().parseArray<Marca>(response)
+            var list: MutableList<String> = mutableListOf<String>()
+            if (klaxon != null) {
+                list.add("Seleccione esta mierda")
+                for (element in klaxon){
+                    list.add(element.nombre)
+                }
+                spiner.adapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,list)
+            }
+        }, { Toast.makeText(applicationContext, "algo salio mal", Toast.LENGTH_SHORT).show()})
 
         queue.add(stringRequest)
+
     }
 
 
@@ -158,6 +229,17 @@ class FotoMulActivity : AppCompatActivity() {
         if (resultCode == RESULT_OK && requestCode == REQUEST_CAMARE){
             imgFoto.setImageURI(foto!!)
         }
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        if (position != null){
+            textDescripcioncodigo.text = listDescripcion.set(position,"")
+        }
+        //Toast.makeText(applicationContext, "${onItemSelected()}", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+
     }
 
 }

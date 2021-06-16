@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".FotoMulActivity">
 
+
     <ImageView
         android:id="@+id/imgLogo2"
         android:layout_width="232dp"
@@ -61,16 +62,6 @@
         app:layout_constraintTop_toBottomOf="@+id/spnMarca" />
 
     <TextView
-        android:id="@+id/textObservacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="OBSERVACIONES"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDescripcion" />
-
-    <TextView
         android:id="@+id/textDescripcionCodigo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,23 +82,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textPlaca" />
 
-    <EditText
-        android:id="@+id/editTextDescripcion"
-        android:layout_width="350dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+    <ImageView
+        android:id="@+id/imgFoto"
+        android:layout_width="228dp"
+        android:layout_height="174dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextObservaciones"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <Button
+        android:id="@+id/btnGaleria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="GALERIA"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textDescripcionCodigo" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCamara" />
+
+    <TextView
+        android:id="@+id/textObservacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="OBSERVACIONES"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDescripcioncodigo" />
+
+    <Button
+        android:id="@+id/btnCamara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Tomar foto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextObservaciones" />
+
+    <Button
+        android:id="@+id/buttonprueba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGaleria" />
 
     <EditText
         android:id="@+id/editTextObservaciones"
         android:layout_width="350dp"
         android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
@@ -132,34 +162,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCodigoMulta" />
 
-    <Button
-        android:id="@+id/btnCamara"
+    <TextView
+        android:id="@+id/textDescripcioncodigo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:text="Tomar foto"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextObservaciones" />
+        app:layout_constraintTop_toBottomOf="@+id/textDescripcionCodigo" />
 
-    <ImageView
-        android:id="@+id/imgFoto"
-        android:layout_width="228dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextObservaciones"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
-
-    <Button
-        android:id="@+id/btnGaleria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="GALERIA"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCamara" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
