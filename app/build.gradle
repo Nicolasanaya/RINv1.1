@@ -49,4 +49,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     //klaxon
     implementation 'com.beust:klaxon:5.5'
+    //okhhtp
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
 }
