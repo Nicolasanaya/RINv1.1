@@ -67,25 +67,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textPlaca" />
 
-            <TextView
-                android:id="@+id/textMarca"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:text="MARCA"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextPlaca" />
+<!--            <TextView-->
+<!--                android:id="@+id/textMarca"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:text="MARCA"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/editTextPlaca" />-->
 
-            <Spinner
-                android:id="@+id/spnMarca"
-                android:layout_width="350dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:spinnerMode="dropdown"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textMarca" />
+<!--            <Spinner-->
+<!--                android:id="@+id/spnMarca"-->
+<!--                android:layout_width="350dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:spinnerMode="dropdown"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/textMarca" />-->
 
             <TextView
                 android:id="@+id/textCodigoMulta"
@@ -166,6 +166,7 @@
 
                 <Button
                     android:id="@+id/btnCamara"
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -178,6 +179,7 @@
 
                 <Button
                     android:id="@+id/btnGaleria"
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -191,6 +193,7 @@
 
             <Button
                 android:id="@+id/btnPrueba"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

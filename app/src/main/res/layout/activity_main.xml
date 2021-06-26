@@ -40,29 +40,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textTitulo" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btnIniciarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
+        android:text="INICIAR SESÍON"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNombreEmpresa"
         android:onClick="ImageButton_Click"
-        app:srcCompat="@mipmap/is" />
+        />
 
-    <ImageButton
+    <Button
         android:id="@+id/btnRegistrate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:text="REGÍSTRATE"
+        android:onClick="ButtonFotomul_Click"
         android:layout_marginEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNombreEmpresa"
-        app:srcCompat="@mipmap/registrar" />
+        />
 
-    <ImageButton
+    <Button
         android:id="@+id/btnAtencion"
+        android:text="ATENCIÓN AL CIUDADANO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
@@ -71,5 +75,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistrate"
-        app:srcCompat="@mipmap/atencion" />
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

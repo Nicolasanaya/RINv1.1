@@ -37,7 +37,7 @@ class FotoMulActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     var fotoformulario: Uri? = null
     var listDescripcion: MutableList<String> = mutableListOf<String>()
     var listCodigo: MutableList<String> = mutableListOf<String>()
-    var list: MutableList<String> = mutableListOf<String>()
+//    var list: MutableList<String> = mutableListOf<String>()
     //val Prueba = findViewById<TextView>(R.id.textDescripcioncodigo)
     val jsonObject:Multa = Multa("","","","","")
 
@@ -49,7 +49,7 @@ class FotoMulActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
         abrirGaleria_Click()
         abrirCamara_Click()
-        LlamadoMarcas()
+//        LlamadoMarcas()
         LlamadosCodigos()
         Enviopost()
 
@@ -82,7 +82,6 @@ class FotoMulActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                     Toast.makeText(applicationContext, "No se pudo cargar la camara", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 
 
@@ -174,27 +173,27 @@ class FotoMulActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
     }
 
-    private fun LlamadoMarcas(){
-        val spiner = findViewById<Spinner>(R.id.spnMarca)
-        val url = "https://apir.apiupbateneo.xyz/Multas/Marcas"
-
-        val queue = Volley.newRequestQueue(this)
-
-        val stringRequest = StringRequest(Request.Method.GET,url, {
-                response ->  val klaxon = Klaxon().parseArray<Marca>(response)
-//            var list: MutableList<String> = mutableListOf<String>()
-            if (klaxon != null) {
-                list.add("Seleccione una opcion")
-                for (element in klaxon){
-                    list.add(element.nombre)
-                }
-                spiner.adapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,list)
-            }
-        }, { Toast.makeText(applicationContext, "algo salio mal", Toast.LENGTH_SHORT).show()})
-
-        queue.add(stringRequest)
-
-    }
+//    private fun LlamadoMarcas(){
+//        val spiner = findViewById<Spinner>(R.id.spnMarca)
+//        val url = "https://apir.apiupbateneo.xyz/Multas/Marcas"
+//
+//        val queue = Volley.newRequestQueue(this)
+//
+//        val stringRequest = StringRequest(Request.Method.GET,url, {
+//                response ->  val klaxon = Klaxon().parseArray<Marca>(response)
+////            var list: MutableList<String> = mutableListOf<String>()
+//            if (klaxon != null) {
+//                list.add("Seleccione una opcion")
+//                for (element in klaxon){
+//                    list.add(element.nombre)
+//                }
+//                spiner.adapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,list)
+//            }
+//        }, { Toast.makeText(applicationContext, "algo salio mal", Toast.LENGTH_SHORT).show()})
+//
+//        queue.add(stringRequest)
+//
+//    }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 //        if (position != null){
@@ -216,18 +215,18 @@ class FotoMulActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         val nplaca = placas.text
         jsonObject.placa = nplaca.toString()
 
-        val marca = findViewById<Spinner>(R.id.spnMarca)
-        //val marcaa:String = marca.onItemClickListener.toString()
-        marca.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
-                val item = parent.getItemAtPosition(pos)
-                jsonObject.marca = item.toString()
-
-                //Toast.makeText(applicationContext, "$item", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
+//        val marca = findViewById<Spinner>(R.id.spnMarca)
+//        //val marcaa:String = marca.onItemClickListener.toString()
+//        marca.onItemSelectedListener = object : OnItemSelectedListener {
+//            override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
+//                val item = parent.getItemAtPosition(pos)
+//                jsonObject.marca = item.toString()
+//
+//                //Toast.makeText(applicationContext, "$item", Toast.LENGTH_SHORT).show()
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>?) {}
+//        }
 
         val multa = findViewById<Spinner>(R.id.spnCodigoMulta)
         multa.onItemSelectedListener = object : OnItemSelectedListener {
@@ -272,26 +271,28 @@ class FotoMulActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 //        val foto: URI = URI(fotoformulario?.scheme,fotoformulario?.schemeSpecificPart,fotoformulario?.fragment)
 //        Toast.makeText(applicationContext,foto.toString(), Toast.LENGTH_SHORT).show()
 //
-//    }
+////    }
     fun btnPrueba_Click(view: View?){
         //val foto: URI = URI("file:/" + fotoformulario?.scheme,fotoformulario?.schemeSpecificPart,fotoformulario?.fragment)
         //val foto: URI = URI.create("file:/" + fotoformulario?.path)
         val client = OkHttpClient()
         val direccionfoto = getRealPathFromURI(applicationContext,fotoformulario!!)
         jsonObject.placa = editTextPlaca.text.toString()
-        jsonObject.estado = textDescripcionCodigo.text.toString()
+//        jsonObject.estado = textDescripcionCodigo.text.toString()
         jsonObject.observacion = editTextObservaciones.text.toString()
-        jsonObject.marca = spnMarca.toString()
+//        jsonObject.marca = spnMarca.toString()
 
         val requesBody = MultipartBody.Builder()
             .setType(MultipartBody.FORM)
             .addFormDataPart("placa",jsonObject.placa)
-            .addFormDataPart("marca",jsonObject.marca)
+//            .addFormDataPart("marca",jsonObject.marca)
             .addFormDataPart("codigo",jsonObject.codigo)
-            .addFormDataPart("estado",jsonObject.estado)
+//            .addFormDataPart("estado",jsonObject.estado)
             .addFormDataPart("observacion",jsonObject.observacion)
-            .addFormDataPart("foto","fotomulta", File(direccionfoto).asRequestBody("image/jpg".toMediaType()))
+            .addFormDataPart("foto","fotomulta.jpg", File(direccionfoto).asRequestBody("image/jpg".toMediaType()))
+//            .addFormDataPart("foto","fotomulta",  )
             .build()
+
 
         val request = okhttp3.Request.Builder()
             .url("https://apir.apiupbateneo.xyz/Multas/Multa")
@@ -326,5 +327,9 @@ class FotoMulActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         val s: String = cursor.getString(column_index)
         cursor.close()
         return s
+
+
     }
 }
+
+
